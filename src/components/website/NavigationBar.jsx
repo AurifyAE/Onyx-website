@@ -64,7 +64,7 @@ const NavigationBar = () => {
     >
       <Toolbar
         sx={{
-          maxWidth: 1200,
+          maxWidth: 1400,
           width: "100%",
           mx: "auto",
           px: { xs: 2, md: 3 },

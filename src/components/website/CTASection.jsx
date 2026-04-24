@@ -25,6 +25,7 @@ export default function CTASection() {
           position: 'relative',
           p: { xs: 3, md: 5 },
         }}
+        data-aos="fade-up"
       >
         <Box
           sx={{

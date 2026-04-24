@@ -137,6 +137,7 @@ const WebsiteHero = () => {
       />
 
       <Container maxWidth="lg">
+        <Box data-aos="fade-up">
         <Grid
           container
           spacing={{ xs: 4.5, md: 8 }}
@@ -150,8 +151,6 @@ const WebsiteHero = () => {
             <Stack spacing={0}>
               {/* Eyebrow */}
               <Stack
-                direction="row"
-                alignItems="center"
                 spacing={1.5}
                 sx={{ mb: { xs: 2, md: 3 } }}
               >
@@ -223,6 +222,8 @@ const WebsiteHero = () => {
                 direction={{ xs: "column", sm: "row" }}
                 spacing={1.5}
                 sx={{ mb: { xs: 2.5, md: 4 } }}
+                data-aos="fade-up"
+                data-aos-delay="120"
               >
                 <Button
                   variant="contained"
@@ -300,6 +301,8 @@ const WebsiteHero = () => {
                 boxShadow:
                   "0 0 0 1px rgba(214,181,106,0.06), 0 32px 80px rgba(0,0,0,0.55)",
               }}
+              data-aos="fade-left"
+              data-aos-delay="140"
             >
               {/* Gold gradient top stripe */}
               <Box
@@ -400,6 +403,7 @@ const WebsiteHero = () => {
             </Box>
           </Grid>
         </Grid>
+        </Box>
       </Container>
     </Box>
   );

@@ -22,6 +22,7 @@ const WebsiteFooter = () => {
         pb: 4,
         bgcolor: '#050607',
       }}
+      data-aos="fade-up"
     >
       <Container maxWidth="lg">
         <Grid container spacing={4}>

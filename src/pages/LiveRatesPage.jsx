@@ -124,7 +124,7 @@ const LiveRatesPage = () => {
       <Box sx={{ px: { xs: 0.75, sm: 1, md: 2 }, py: { xs: 1, md: 2.5 } }}>
         <Box
           sx={{
-            maxWidth: 1200,
+            maxWidth: 1400,
             mx: "auto",
             borderRadius: { xs: 2, md: 4 },
             overflow: "hidden",

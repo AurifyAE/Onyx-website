@@ -1,21 +1,6 @@
 import React from 'react';
-import { Box, Divider, Grid, Stack, Typography } from '@mui/material';
+import { Box, Divider, Stack, Typography } from '@mui/material';
 import Section from './Section';
-
-/* ── Reusable label style ── */
-const Label = ({ children }) => (
-  <Typography
-    sx={{
-      fontSize: 10.5,
-      letterSpacing: '0.28em',
-      textTransform: 'uppercase',
-      color: 'primary.main',
-      opacity: 0.85,
-    }}
-  >
-    {children}
-  </Typography>
-);
 
 const pillars = [
   {
@@ -35,36 +20,51 @@ const pillars = [
   },
 ];
 
+const stats = [
+  { value: '15+', label: 'Years active' },
+  { value: '50+', label: 'Countries served' },
+  { value: '1:1', label: 'Dedicated service' },
+];
+
 export default function WhoWeAre() {
   return (
     <Section id="about" variant="shaded">
 
-      {/* ════════════════════════════════
-          ROW 1 — Section header band
-      ════════════════════════════════ */}
+      {/* ══════════════════════════════
+          HEADER BAND
+      ══════════════════════════════ */}
       <Box
         sx={{
           display: 'flex',
           alignItems: { xs: 'flex-start', md: 'flex-end' },
-          flexDirection: { xs: 'column', md: 'row' },
           justifyContent: 'space-between',
-          gap: { xs: 2.25, md: 6 },
-          pb: { xs: 3, md: 5 },
+          gap: { xs: 3, md: 6 },
+          flexWrap: 'wrap',
+          pb: 5,
           borderBottom: '1px solid rgba(255,255,255,0.08)',
         }}
       >
-        {/* Left — eyebrow + headline */}
-        <Box sx={{ maxWidth: 520 }}>
-          <Stack direction="row" alignItems="center" spacing={1.5} sx={{ mb: { xs: 1.5, md: 2.5 } }}>
+        {/* Left */}
+        <Box>
+          <Stack direction="row" alignItems="center" spacing={1.5} sx={{ mb: 2.5 }}>
             <Box sx={{ width: 24, height: 1, bgcolor: 'primary.main', opacity: 0.8 }} />
-            <Label>About</Label>
+            <Typography
+              sx={{
+                color: 'primary.main',
+                textTransform: 'uppercase',
+                letterSpacing: '0.3em',
+                fontSize: 11,
+              }}
+            >
+              About
+            </Typography>
           </Stack>
 
           <Typography
             variant="h2"
             sx={{
-              fontSize: { xs: 24, sm: 28, md: 38, lg: 46 },
-              lineHeight: { xs: 1.18, md: 1.1 },
+              fontSize: { xs: 26, sm: 32, md: 38, lg: 46 },
+              lineHeight: 1.1,
               letterSpacing: '-0.02em',
             }}
           >
@@ -73,7 +73,7 @@ export default function WhoWeAre() {
               component="span"
               sx={{
                 fontStyle: 'italic',
-                background: 'linear-gradient(90deg, #D6B56A 0%, #F4E3B2 55%, #D6B56A 100%)',
+                background: 'linear-gradient(90deg,#D6B56A 0%,#F4E3B2 55%,#D6B56A 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}
@@ -84,169 +84,302 @@ export default function WhoWeAre() {
           </Typography>
         </Box>
 
-        {/* Right — description + stat row */}
-        <Box
+        {/* Right */}
+        <Typography
           sx={{
-            flexShrink: 0,
-            maxWidth: { xs: '100%', md: 360 },
-            display: 'flex',
-            flexDirection: 'column',
-            gap: { xs: 2, md: 3 },
+            color: 'rgba(255,255,255,0.45)',
+            fontSize: 14,
+            lineHeight: 1.9,
+            maxWidth: 360,
+            alignSelf: 'flex-end',
           }}
         >
-          <Typography sx={{ color: 'rgba(255,255,255,0.50)', fontSize: { xs: 13.5, md: 14.5 }, lineHeight: { xs: 1.75, md: 1.9 } }}>
-            Onyx Gold brings a disciplined approach to precious metals — clear
-            quoting, careful handling, and service designed for long-term investors.
-          </Typography>
-
-          {/* Inline stats */}
-          <Stack
-            direction="row"
-            divider={
-              <Divider
-                orientation="vertical"
-                flexItem
-                sx={{ borderColor: 'rgba(255,255,255,0.08)' }}
-              />
-            }
-            spacing={{ xs: 2, md: 3 }}
-          >
-            {[
-              { value: '15+', label: 'Years active' },
-              { value: '50+', label: 'Countries served' },
-            ].map((s) => (
-              <Box key={s.label}>
-                <Typography
-                  sx={{
-                    fontFamily: '"Cinzel", serif',
-                    fontSize: { xs: 22, md: 26 },
-                    fontWeight: 700,
-                    background: 'linear-gradient(90deg, #D6B56A 0%, #F4E3B2 60%, #D6B56A 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    lineHeight: 1,
-                    mb: 0.5,
-                  }}
-                >
-                  {s.value}
-                </Typography>
-                <Typography sx={{ fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>
-                  {s.label}
-                </Typography>
-              </Box>
-            ))}
-          </Stack>
-        </Box>
+          Onyx Gold brings a disciplined approach to precious metals — clear
+          quoting, careful handling, and service designed for long-term investors.
+        </Typography>
       </Box>
 
-      {/* ════════════════════════════════
-          ROW 2 — Three-column pillars
-      ════════════════════════════════ */}
-      <Grid
-        container
-        sx={{ mt: 0 }}
-        divider={
-          <Divider
-            orientation="vertical"
-            flexItem
-            sx={{ borderColor: 'rgba(255,255,255,0.07)', display: { xs: 'none', md: 'block' } }}
-          />
-        }
+      {/* ══════════════════════════════
+          STAT ROW
+      ══════════════════════════════ */}
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr 1fr', sm: 'repeat(3, 1fr)' },
+          borderBottom: '1px solid rgba(255,255,255,0.08)',
+        }}
+        data-aos="fade-up"
       >
-        {pillars.map((p, i) => (
-          <Grid
-            key={p.num}
-            item
-            xs={12}
-            md
+        {stats.map((s, i) => (
+          <Box
+            key={s.label}
             sx={{
-              pt: { xs: 3, md: 5 },
-              pb: { xs: 3, md: 5 },
-              px: { xs: 0, md: i === 0 ? '0 3.5rem 0 0' : i === 2 ? '0 0 0 3.5rem' : '0 3.5rem' },
+              py: { xs: 3, md: 4 },
+              px: { xs: 0, md: 0 },
               pl: { md: i === 0 ? 0 : 5 },
               pr: { md: i === 2 ? 0 : 5 },
-              borderBottom: {
-                xs: i < 2 ? '1px solid rgba(255,255,255,0.07)' : 'none',
-                md: 'none',
+              borderRight: i < 2 ? '1px solid rgba(255,255,255,0.08)' : 'none',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: { xs: 'center', md: i === 0 ? 'flex-start' : i === 2 ? 'flex-end' : 'center' },
+              transition: 'transform 260ms ease, background 260ms ease',
+              '&:hover': {
+                transform: 'translateY(-3px)',
+                bgcolor: 'rgba(214,181,106,0.03)',
               },
             }}
+            data-aos="fade-up"
+            data-aos-delay={i * 80}
           >
-            {/* Number */}
             <Typography
               sx={{
                 fontFamily: '"Cinzel", serif',
-                fontSize: 11,
-                color: 'primary.main',
-                opacity: 0.6,
-                letterSpacing: '0.12em',
-                mb: { xs: 2, md: 3 },
+                fontSize: { xs: 30, md: 38 },
+                fontWeight: 700,
+                background: 'linear-gradient(90deg,#D6B56A 0%,#F4E3B2 60%,#D6B56A 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                lineHeight: 1,
+                mb: 0.75,
               }}
             >
-              {p.num}
+              {s.value}
             </Typography>
-
-            {/* Thin gold rule */}
-            <Box
+            <Typography
               sx={{
-                width: 28,
-                height: 1.5,
-                bgcolor: 'primary.main',
-                borderRadius: 1,
-                opacity: 0.5,
-                mb: { xs: 1.75, md: 2.5 },
+                fontSize: 10.5,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.30)',
               }}
-            />
+            >
+              {s.label}
+            </Typography>
+          </Box>
+        ))}
+      </Box>
+
+      {/* ══════════════════════════════
+          THREE PILLARS — full-width rows
+      ══════════════════════════════ */}
+      <Box>
+        {pillars.map((p, i) => (
+          <Box
+            key={p.num}
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', md: '200px 1fr 1.6fr' },
+              alignItems: 'start',
+              gap: { xs: 1.5, md: 0 },
+              py: { xs: 3.5, md: 4.5 },
+              borderBottom: i < pillars.length - 1
+                ? '1px solid rgba(255,255,255,0.07)'
+                : 'none',
+              px: { xs: 0, md: 1 },
+              mx: { xs: 0, md: -1 },
+              borderRadius: 2,
+              transition: 'background 260ms ease, transform 260ms ease, box-shadow 260ms ease',
+              '&:hover': {
+                bgcolor: 'rgba(214,181,106,0.03)',
+                transform: 'translateY(-2px)',
+                boxShadow: '0 14px 28px rgba(0,0,0,0.18)',
+              },
+            }}
+            data-aos="fade-up"
+            data-aos-delay={i * 100}
+          >
+            {/* Number + rule */}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, pt: { md: 0.5 } }}>
+              <Typography
+                sx={{
+                  fontFamily: '"Cinzel", serif',
+                  fontSize: 11,
+                  color: 'primary.main',
+                  opacity: 0.5,
+                  letterSpacing: '0.14em',
+                  flexShrink: 0,
+                }}
+              >
+                {p.num}
+              </Typography>
+              <Box
+                sx={{
+                  height: 1,
+                  flex: 1,
+                  maxWidth: 40,
+                  bgcolor: 'primary.main',
+                  opacity: 0.25,
+                  borderRadius: 1,
+                  display: { xs: 'none', md: 'block' },
+                }}
+              />
+            </Box>
 
             {/* Title */}
-            <Typography
-              sx={{
-                fontFamily: '"Cinzel", serif',
-                fontSize: { xs: 14, md: 15 },
-                fontWeight: 600,
-                letterSpacing: '0.08em',
-                color: 'rgba(255,255,255,0.92)',
-                mb: { xs: 1, md: 1.5 },
-              }}
-            >
-              {p.title}
-            </Typography>
+            <Box sx={{ pt: { md: 0.4 }, pr: { md: 4 } }}>
+              <Typography
+                sx={{
+                  fontFamily: '"Cinzel", serif',
+                  fontSize: { xs: 14, md: 16 },
+                  fontWeight: 600,
+                  letterSpacing: '0.08em',
+                  color: 'rgba(255,255,255,0.92)',
+                }}
+              >
+                {p.title}
+              </Typography>
+              {/* show body here on mobile */}
+              <Typography
+                sx={{
+                  color: 'rgba(255,255,255,0.45)',
+                  fontSize: 13,
+                  lineHeight: 1.85,
+                  mt: 0.75,
+                  display: { xs: 'block', md: 'none' },
+                }}
+              >
+                {p.body}
+              </Typography>
+            </Box>
 
-            {/* Body */}
+            {/* Body — desktop only */}
             <Typography
               sx={{
-                color: 'rgba(255,255,255,0.48)',
-                fontSize: { xs: 13.25, md: 14 },
-                lineHeight: { xs: 1.75, md: 1.9 },
+                color: 'rgba(255,255,255,0.45)',
+                fontSize: 14,
+                lineHeight: 1.9,
+                display: { xs: 'none', md: 'block' },
+                borderLeft: '1px solid rgba(255,255,255,0.07)',
+                pl: 4,
               }}
             >
               {p.body}
             </Typography>
-          </Grid>
+          </Box>
         ))}
-      </Grid>
+      </Box>
 
-      {/* ════════════════════════════════
-          ROW 3 — Bottom rule + tag line
-      ════════════════════════════════ */}
+      {/* ══════════════════════════════
+          GOLD HIGHLIGHT CARD
+      ══════════════════════════════ */}
+      <Box
+        sx={{
+          mt: 5,
+          p: { xs: 3, md: 4 },
+          borderRadius: '16px',
+          border: '1px solid rgba(214,181,106,0.15)',
+          background:
+            'linear-gradient(135deg,rgba(214,181,106,0.07) 0%,rgba(214,181,106,0.02) 100%)',
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', sm: '1fr auto 1fr' },
+          gap: { xs: 3, sm: 0 },
+          alignItems: 'center',
+          transition: 'transform 280ms ease, box-shadow 280ms ease',
+          '&:hover': {
+            transform: 'translateY(-3px)',
+            boxShadow: '0 20px 44px rgba(0,0,0,0.22)',
+          },
+        }}
+        data-aos="zoom-in-up"
+      >
+        {/* Left */}
+        <Box>
+          <Box
+            sx={{ width: 28, height: 1.5, bgcolor: 'primary.main', opacity: 0.6, borderRadius: 1, mb: 2 }}
+          />
+          <Typography
+            sx={{
+              fontFamily: '"Cinzel", serif',
+              fontSize: { xs: 14, md: 16 },
+              fontWeight: 600,
+              letterSpacing: '0.06em',
+              color: 'rgba(255,255,255,0.90)',
+              mb: 0.75,
+            }}
+          >
+            Dubai headquarters
+          </Typography>
+          <Typography sx={{ color: 'rgba(255,255,255,0.42)', fontSize: 13.5, lineHeight: 1.85 }}>
+            Office 103, 1st Floor, Aldallal Building
+            <br />
+            30B Street, Al Daghaya – Al Sabkha, Dubai
+          </Typography>
+        </Box>
+
+        {/* Divider */}
+        <Box
+          sx={{
+            width: { xs: '100%', sm: 1 },
+            height: { xs: 1, sm: 56 },
+            bgcolor: 'rgba(214,181,106,0.18)',
+            borderTopRightRadius: 150,
+            borderBottomLeftRadius: 140,
+            mx: { sm: 5 },
+            flexShrink: 0,
+          }}
+        />
+
+        {/* Right */}
+        <Box>
+          <Typography
+            sx={{
+              fontSize: 10.5,
+              letterSpacing: '0.24em',
+              textTransform: 'uppercase',
+              color: 'primary.main',
+              opacity: 0.75,
+              mb: 1,
+            }}
+          >
+            Established in Dubai
+          </Typography>
+          <Typography sx={{ color: 'rgba(255,255,255,0.42)', fontSize: 13.5, lineHeight: 1.85 }}>
+            Serving investors across the Middle East,
+            <br />
+            Asia, and Europe since 2009.
+          </Typography>
+        </Box>
+      </Box>
+
+      {/* ══════════════════════════════
+          FOOTER BAR
+      ══════════════════════════════ */}
       <Box
         sx={{
           borderTop: '1px solid rgba(255,255,255,0.08)',
-          pt: { xs: 2.25, md: 3.5 },
+          mt: 5,
+          pt: 3.5,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           flexWrap: 'wrap',
-          gap: { xs: 1.5, md: 2 },
+          gap: 2,
         }}
       >
-        <Typography sx={{ fontSize: { xs: 10.5, md: 11.5 }, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)' }}>
+        <Typography
+          sx={{
+            fontSize: 11,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.20)',
+          }}
+        >
           Onyx Gold Bullion — Est. Dubai
         </Typography>
-        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 3 }}>
+        <Stack
+          direction="row"
+          spacing={3}
+          sx={{ display: { xs: 'none', sm: 'flex' } }}
+        >
           {['Transparent pricing', 'Secure handling', 'Discreet service'].map((tag) => (
             <Typography
               key={tag}
-              sx={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)' }}
+              sx={{
+                fontSize: 11,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.20)',
+              }}
             >
               {tag}
             </Typography>
