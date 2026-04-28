@@ -10,7 +10,6 @@ import {
   ListItemButton,
   ListItemText,
   Toolbar,
-  Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -25,7 +24,8 @@ const NavigationBar = () => {
     () => [
       { label: "Home", id: "home" },
       { label: "About", id: "about" },
-      { label: "Products", id: "products" },
+      { label: "Services", id: "services" },
+      { label: "Showcase", id: "showcase" },
       { label: "Contact", id: "contact" },
     ],
     [],
@@ -54,10 +54,10 @@ const NavigationBar = () => {
       position="fixed"
       elevation={0}
       sx={{
-        bgcolor: scrolled ? "rgba(5,6,7,0.72)" : "transparent",
+        bgcolor: scrolled ? "rgba(248,225,197,0.88)" : "transparent",
         backdropFilter: scrolled ? "blur(14px)" : "none",
         borderBottom: scrolled
-          ? "1px solid rgba(255,255,255,0.08)"
+          ? "1px solid rgba(128,55,56,0.16)"
           : "1px solid transparent",
         transition: "all 220ms ease",
       }}
@@ -74,52 +74,21 @@ const NavigationBar = () => {
         <Box
           onClick={handleLogoClick}
           sx={{
-            position: "relative",
-            height: 70,
-            width: !scrolled ? 70 : 90,
+            height: { xs: 28, md: 36 },
+            width: { xs: 140, md: 180 },
             cursor: "pointer",
-            overflow: "hidden", // hides logos as they exit/enter
             flexShrink: 0,
-            // background: "red",
-            transition: "ALL 420ms ease",
           }}
         >
-          {/* logo.svg — visible by default, slides OUT to the left on scroll */}
           <Box
             component="img"
             src="/images/logo.svg"
             alt="Onyx Gold"
             sx={{
-              position: "absolute",
-              inset: 0,
               width: "100%",
               height: "100%",
               objectFit: "contain",
-              top: "50%",
-              transform: !scrolled
-                ? "translateX(-110%) translateY(-50%)"
-                : "translateX(0%) translateY(-50%)",
-              opacity: !scrolled ? 0 : 1,
-              transition: "all 420ms cubic-bezier(0.4,0,0.2,1)",
-            }}
-          />
-
-          {/* logo1.svg — hidden off-left by default, slides IN from the left on scroll */}
-          <Box
-            component="img"
-            src="/images/logo1.svg"
-            alt="Onyx Gold"
-            sx={{
-              position: "absolute",
-              inset: 0,
-              height: "60%",
-              top: "50%",
-              objectFit: "contain",
-              transform: !scrolled
-                ? "translateX(0%)  translateY(-50%)"
-                : "translateX(-110%)  translateY(-50%)",
-              opacity: !scrolled ? 1 : 0,
-              transition: "all 420ms cubic-bezier(0.4,0,0.2,1) ",
+              objectPosition: "left",
             }}
           />
         </Box>
@@ -139,11 +108,11 @@ const NavigationBar = () => {
               key={item.id}
               onClick={() => scrollToId(item.id)}
               sx={{
-                color: "rgba(255,255,255,0.78)",
+                color: "rgba(63,31,36,0.86)",
                 px: 1.5,
                 "&:hover": {
-                  color: "secondary.main",
-                  bgcolor: "rgba(255,255,255,0.04)",
+                  color: "primary.main",
+                  bgcolor: "rgba(128,55,56,0.08)",
                 },
               }}
             >
@@ -152,16 +121,16 @@ const NavigationBar = () => {
           ))}
           <Button
             variant="contained"
-            onClick={() => navigate("/liverates")}
+              onClick={() => scrollToId("services")}
             sx={{
               ml: 1,
               bgcolor: "primary.main",
-              color: "#0b0e10",
+              color: "secondary.main",
               px: 2.25,
-              "&:hover": { bgcolor: "secondary.main" },
+                "&:hover": { bgcolor: "#6E3038", boxShadow: "0 10px 24px rgba(128,55,56,0.2)" },
             }}
           >
-            Live rates
+            Explore services
           </Button>
         </Box>
 
@@ -171,7 +140,7 @@ const NavigationBar = () => {
           sx={{
             display: { xs: "inline-flex", md: "none" },
             ml: 1,
-            color: "secondary.main",
+            color: "primary.main",
           }}
           aria-label="Open menu"
         >
@@ -187,8 +156,8 @@ const NavigationBar = () => {
         PaperProps={{
           sx: {
             width: 320,
-            bgcolor: "#050607",
-            borderLeft: "1px solid rgba(255,255,255,0.08)",
+            bgcolor: "#F8E1C5",
+            borderLeft: "1px solid rgba(128,55,56,0.2)",
           },
         }}
       >
@@ -196,29 +165,20 @@ const NavigationBar = () => {
           sx={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between",
+            justifyContent: "flex-end",
             px: 2,
             py: 1.5,
           }}
         >
-          <Typography
-            sx={{
-              fontFamily: '"Cinzel", serif',
-              letterSpacing: "0.08em",
-              fontWeight: 600,
-            }}
-          >
-            ONYX GOLD
-          </Typography>
           <IconButton
             onClick={() => setMobileOpen(false)}
-            sx={{ color: "rgba(255,255,255,0.78)" }}
+            sx={{ color: "primary.main" }}
             aria-label="Close menu"
           >
             <CloseIcon />
           </IconButton>
         </Box>
-        <Divider sx={{ borderColor: "rgba(255,255,255,0.08)" }} />
+        <Divider sx={{ borderColor: "rgba(128,55,56,0.2)" }} />
         <List sx={{ px: 1 }}>
           {navItems.map((item) => (
             <ListItemButton
@@ -230,7 +190,7 @@ const NavigationBar = () => {
               sx={{
                 borderRadius: 2,
                 my: 0.5,
-                "&:hover": { bgcolor: "rgba(255,255,255,0.04)" },
+                "&:hover": { bgcolor: "rgba(128,55,56,0.1)" },
               }}
             >
               <ListItemText
@@ -239,6 +199,7 @@ const NavigationBar = () => {
                   fontSize: 14,
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
+                  color: "text.primary",
                 }}
               />
             </ListItemButton>
@@ -250,16 +211,16 @@ const NavigationBar = () => {
             variant="contained"
             onClick={() => {
               setMobileOpen(false);
-              navigate("/liverates");
+              scrollToId("about");
             }}
             sx={{
               bgcolor: "primary.main",
-              color: "#0b0e10",
+              color: "secondary.main",
               py: 1.25,
-              "&:hover": { bgcolor: "secondary.main" },
+              "&:hover": { bgcolor: "#6E3038" },
             }}
           >
-            Open live rates
+            View license
           </Button>
         </Box>
       </Drawer>

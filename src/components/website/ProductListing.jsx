@@ -1,513 +1,347 @@
-import React, { useMemo, useRef, useState } from "react";
-import {
-  Box,
-  Button,
-  Chip,
-  Stack,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Keyboard, Autoplay } from "swiper/modules";
-import "swiper/css";
+import React from "react";
+import { Box, Stack, Typography } from "@mui/material";
 import Section from "./Section";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-const PRODUCTS = [
+const BRAND_STEPS = [
   {
-    id: 1,
-    name: "Gold Coins",
-    image: "/images/products/gold-coins.webp",
-    category: "Coins",
+    number: "01",
+    title: "Sketch Concept",
+    body: "The circular emblem starts as a hand-drawn ring form inspired by precious-metal craftsmanship.",
+    label: "Origin",
   },
   {
-    id: 2,
-    name: "Cast Gold Bars",
-    image: "/images/products/gold bars.webp",
-    category: "Bullion",
+    number: "02",
+    title: "Final Identity",
+    body: "A refined monogram built for clarity, trust, and premium recognition across all trading touchpoints.",
+    label: "Mark",
   },
   {
-    id: 3,
-    name: "PAMP Suisse Bar",
-    image: "/images/products/pamp-bar.webp",
-    category: "Bullion",
-  },
-  {
-    id: 4,
-    name: "1 Kilo Gold Bar",
-    image: "/images/products/kilo-bar.webp",
-    category: "Bullion",
-  },
-  {
-    id: 5,
-    name: "Ten Tola (TT) Bar",
-    image: "/images/products/tt-bar.webp",
-    category: "Bullion",
-  },
-  {
-    id: 6,
-    name: "Premium Chains",
-    image: "/images/products/chains.webp",
-    category: "Jewelry",
-  },
-  {
-    id: 7,
-    name: "Crafted Bangles",
-    image: "/images/products/bangles.webp",
-    category: "Jewelry",
-  },
-  {
-    id: 8,
-    name: "Gold Rings",
-    image: "/images/products/rings.webp",
-    category: "Jewelry",
+    number: "03",
+    title: "Real-World Applications",
+    body: "From flags and packaging to uniforms and branded stationery, the identity remains minimal and elegant.",
+    label: "Applied",
   },
 ];
 
-/* ── Arrow button ── */
-const NavArrow = ({ dir, onClick, size = 48 }) => (
-  <Box
-    onClick={onClick}
-    sx={{
-      width: size,
-      height: size,
-      borderRadius: "50%",
-      border: "1px solid rgba(214,181,106,0.35)",
-      bgcolor: "rgba(214,181,106,0.06)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      cursor: "pointer",
-      flexShrink: 0,
-      transition: "all 200ms ease",
-      "&:hover": {
-        bgcolor: "rgba(214,181,106,0.14)",
-        borderColor: "rgba(214,181,106,0.7)",
-      },
-      "&:active": {
-        transform: "scale(0.93)",
-      },
-    }}
-  >
-    {dir === "prev" ? (
-      <ArrowBackIcon sx={{ fontSize: size * 0.38, color: "#D6B56A" }} />
-    ) : (
-      <ArrowForwardIcon sx={{ fontSize: size * 0.38, color: "#D6B56A" }} />
-    )}
-  </Box>
-);
-
 export default function ProductListing() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // <600px
-  const isTablet = useMediaQuery(theme.breakpoints.down("md")); // <900px
-
-  const categories = useMemo(() => ["All", "Bullion", "Coins", "Jewelry"], []);
-  const [active, setActive] = useState("All");
-  const [activeIndex, setActiveIndex] = useState(0);
-  const swiperRef = useRef(null);
-
-  const filtered = useMemo(
-    () =>
-      active === "All"
-        ? PRODUCTS
-        : PRODUCTS.filter((p) => p.category === active),
-    [active],
-  );
-
-  /* slides visible per breakpoint */
-  const slidesPerView = isMobile ? 1.15 : isTablet ? 2.2 : 4;
-
   return (
-    <Section id="products" variant="plain">
-      {/* ══════════════════════════════
-          HEADER
-      ══════════════════════════════ */}
+    <Section id="identity" variant="soft">
+
+      {/* ── Header ── */}
       <Box
+        data-aos="fade-up"
         sx={{
           display: "flex",
           alignItems: { xs: "flex-start", md: "flex-end" },
           justifyContent: "space-between",
-          gap: { xs: 3, md: 2 },
+          gap: { xs: 3, md: 6 },
           flexWrap: "wrap",
-          pb: { xs: 4, md: 5 },
-          borderBottom: "1px solid rgba(255,255,255,0.08)",
+          pb: { xs: 5, md: 6 },
+          borderBottom: "1px solid rgba(128,55,56,0.14)",
         }}
-        data-aos="fade-up"
       >
-        {/* Left — title block */}
-        <Box sx={{ flex: 1, minWidth: 0 }}>
-          <Stack
-            direction="row"
-            alignItems="center"
-            spacing={1.5}
-            sx={{ mb: 2.5 }}
-          >
+        <Box>
+          <Stack direction="row" alignItems="center" spacing={1.5} sx={{ mb: 3 }}>
             <Box
               sx={{
-                width: 24,
-                height: 1,
+                width: 6,
+                height: 6,
+                transform: "rotate(45deg)",
                 bgcolor: "primary.main",
-                opacity: 0.8,
-                flexShrink: 0,
+                opacity: 0.85,
               }}
             />
             <Typography
               sx={{
                 color: "primary.main",
                 textTransform: "uppercase",
-                letterSpacing: "0.3em",
-                fontSize: 11,
+                letterSpacing: "0.28em",
+                fontSize: 10.5,
+                fontWeight: 500,
               }}
             >
-              Products
+              Brand Identity
             </Typography>
           </Stack>
 
           <Typography
             variant="h2"
             sx={{
-              fontSize: { xs: 26, sm: 32, md: 38, lg: 44 },
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
-              mb: 1.5,
+              fontSize: { xs: 32, sm: 40, md: 50 },
+              lineHeight: 1.05,
+              letterSpacing: "-0.025em",
+              maxWidth: 500,
             }}
           >
-            Bullion and fine gold{" "}
+            From concept ring{" "}
+            <Box component="br" sx={{ display: { xs: "none", md: "block" } }} />
+            to{" "}
             <Box
               component="span"
               sx={{
                 fontStyle: "italic",
-                background:
-                  "linear-gradient(90deg,#D6B56A 0%,#F4E3B2 55%,#D6B56A 100%)",
+                background: "linear-gradient(100deg,#803738 0%,#B87050 50%,#803738 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
             >
-              in standard sizes.
+              luxury applications.
             </Box>
           </Typography>
+        </Box>
 
+        <Box sx={{ maxWidth: 380, alignSelf: "flex-end" }}>
           <Typography
             sx={{
-              color: "rgba(255,255,255,0.45)",
-              fontSize: { xs: 13, md: 14 },
-              maxWidth: 480,
-              lineHeight: 1.9,
+              color: "text.secondary",
+              fontSize: 14.5,
+              lineHeight: 1.95,
+              mb: 2.5,
             }}
           >
-            A curated set of investment-grade bars, coins, and select jewelry.
-            Contact us for latest inventory and pricing.
+            Clean logo storytelling across sketch, final mark, and premium
+            mockup applications for corporate presence.
           </Typography>
-        </Box>
 
-        {/* Right — filters + arrows */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: { xs: "flex-start", md: "flex-end" },
-            gap: 2.5,
-            flexShrink: 0,
-          }}
-        >
-          {/* Category filters */}
-          <Stack direction="row" spacing={0.75} flexWrap="wrap" useFlexGap>
-            {categories.map((c) => (
-              <Button
-                key={c}
-                onClick={() => {
-                  setActive(c);
-                  setActiveIndex(0);
-                  swiperRef.current?.slideToLoop(0);
-                }}
-                variant={active === c ? "contained" : "outlined"}
-                size="small"
+          <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+            {BRAND_STEPS.map((s) => (
+              <Box
+                key={s.number}
                 sx={{
-                  py: { xs: 0.6, md: 0.75 },
-                  px: { xs: 1.25, md: 1.75 },
-                  fontSize: { xs: 11, md: 12 },
-                  letterSpacing: "0.08em",
-                  bgcolor: active === c ? "primary.main" : "transparent",
-                  color: active === c ? "#0b0e10" : "rgba(255,255,255,0.70)",
-                  borderColor: "rgba(255,255,255,0.12)",
-                  "&:hover":
-                    active === c
-                      ? { bgcolor: "secondary.main" }
-                      : {
-                          bgcolor: "rgba(255,255,255,0.04)",
-                          borderColor: "rgba(214,181,106,0.4)",
-                        },
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.75,
+                  px: 1.5,
+                  py: 0.55,
+                  borderRadius: 20,
+                  border: "1px solid rgba(128,55,56,0.2)",
+                  bgcolor: "rgba(128,55,56,0.05)",
                 }}
               >
-                {c}
-              </Button>
+                <Typography
+                  sx={{
+                    fontSize: 9,
+                    fontWeight: 600,
+                    color: "rgba(128,55,56,0.55)",
+                    letterSpacing: "0.1em",
+                  }}
+                >
+                  {s.number}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: 10,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    color: "rgba(63,31,36,0.5)",
+                  }}
+                >
+                  {s.label}
+                </Typography>
+              </Box>
             ))}
           </Stack>
-
-          {/* Nav arrows */}
-          <Stack direction="row" spacing={1.25}>
-            <NavArrow
-              dir="prev"
-              size={isMobile ? 40 : 48}
-              onClick={() => swiperRef.current?.slidePrev()}
-            />
-            <NavArrow
-              dir="next"
-              size={isMobile ? 40 : 48}
-              onClick={() => swiperRef.current?.slideNext()}
-            />
-          </Stack>
         </Box>
       </Box>
 
-      {/* ══════════════════════════════
-          SWIPER CAROUSEL
-      ══════════════════════════════ */}
+      {/* ── Cards — CSS Grid (reliable, no MUI breakpoint dependency) ── */}
       <Box
         sx={{
-          mt: { xs: 4, md: 5 },
-          /* bleed to section edges so side cards peek out */
-          mx: { xs: -2, sm: -4, md: -6 },
-          px: { xs: 2, sm: 4, md: 6 },
-          overflow: "hidden",
-
-          /* scale/opacity per slide state */
-          "& .swiper": { overflow: "visible" },
-          "& .swiper-slide": {
-            transition:
-              "transform 420ms cubic-bezier(0.4,0,0.2,1), opacity 420ms ease",
-            transform: "scale(0.84)",
-            opacity: 0.25,
+          mt: 3,
+          display: "grid",
+          gridTemplateColumns: {
+            xs: "1fr",           // 1 column on mobile
+            sm: "1fr 1fr",       // 2 columns on tablet
+            md: "1fr 1fr 1fr",   // 3 columns on desktop
           },
-          "& .swiper-slide-active": {
-            transform: "scale(1)",
-            opacity: 1,
-          },
-          "& .swiper-slide-prev, & .swiper-slide-next": {
-            transform: isMobile ? "scale(0.88)" : "scale(0.91)",
-            opacity: isMobile ? 0.45 : 0.55,
-          },
+          gap: "20px",
+          alignItems: "stretch",
         }}
-        data-aos="fade-up"
-        data-aos-delay="120"
       >
-        <Swiper
-          modules={[Navigation, Keyboard, Autoplay]}
-          onSwiper={(s) => (swiperRef.current = s)}
-          onSlideChange={(s) => setActiveIndex(s.realIndex)}
-          centeredSlides
-          slidesPerView={slidesPerView}
-          spaceBetween={isMobile ? 5 : 16}
-          loop
-          speed={700}
-          autoplay={{ delay: 2500, disableOnInteraction: false }}
-          keyboard={{ enabled: true }}
-          initialSlide={0}
-          style={{ paddingTop: 20, paddingBottom: 20, overflow: "hidden" }}
-        >
-          {filtered.map((item) => (
-            <SwiperSlide key={item.id}>
+        {BRAND_STEPS.map((item, i) => (
+          <Box
+            key={item.title}
+            data-aos="fade-up"
+            data-aos-delay={i * 90}
+            sx={{
+              position: "relative",
+              borderRadius: 3,
+              border: "1px solid rgba(128,55,56,0.16)",
+              bgcolor: "#FFFFFF",
+              display: "flex",
+              flexDirection: "column",
+              transition: "transform 280ms ease, box-shadow 280ms ease",
+              "&:hover": {
+                transform: "translateY(-5px)",
+                boxShadow: "0 24px 48px rgba(128,55,56,0.14)",
+              },
+              "&::before": {
+                content: '""',
+                position: "absolute",
+                top: 0,
+                left: 20,
+                right: 20,
+                height: "1px",
+                background:
+                  "linear-gradient(90deg, transparent, rgba(128,55,56,0.3), transparent)",
+              },
+            }}
+          >
+            {/* ── Image zone ── */}
+            <Box
+              sx={{
+                position: "relative",
+                bgcolor: "rgba(248,225,197,0.38)",
+                borderBottom: "1px solid rgba(128,55,56,0.1)",
+                borderRadius: "12px 12px 0 0",
+                height: 210,
+                flexShrink: 0,
+                overflow: "hidden",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                "&::after": {
+                  content: '""',
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "radial-gradient(ellipse at center, transparent 55%, rgba(128,55,56,0.07) 100%)",
+                  pointerEvents: "none",
+                },
+              }}
+            >
+              {/* Label badge */}
               <Box
                 sx={{
-                  borderRadius: { xs: "16px", md: "20px" },
-                  border: "1px solid rgba(255,255,255,0.09)",
-                  bgcolor: "rgba(10,11,13,0.80)",
-                  backdropFilter: "blur(16px)",
-                  overflow: "hidden",
-                  boxShadow: "0 24px 60px rgba(0,0,0,0.50)",
+                  position: "absolute",
+                  top: 14,
+                  left: 14,
+                  zIndex: 2,
+                  px: 1.25,
+                  py: 0.4,
+                  borderRadius: 20,
+                  border: "1px solid rgba(128,55,56,0.22)",
+                  bgcolor: "rgba(255,255,255,0.75)",
+                  backdropFilter: "blur(6px)",
                 }}
               >
-                {/* Gold top stripe */}
+                <Typography
+                  sx={{
+                    fontSize: 9.5,
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    color: "rgba(128,55,56,0.7)",
+                    fontWeight: 600,
+                  }}
+                >
+                  {item.label}
+                </Typography>
+              </Box>
+
+              {/* Watermark number */}
+              <Typography
+                sx={{
+                  position: "absolute",
+                  bottom: -16,
+                  right: 12,
+                  fontFamily: '"Cormorant Garamond", serif',
+                  fontSize: 96,
+                  fontWeight: 700,
+                  color: "rgba(128,55,56,0.06)",
+                  lineHeight: 1,
+                  userSelect: "none",
+                  pointerEvents: "none",
+                  zIndex: 0,
+                }}
+              >
+                {item.number}
+              </Typography>
+
+              {/* Logo */}
+              <Box
+                sx={{
+                  position: "relative",
+                  zIndex: 1,
+                  width: "70%",
+                  maxWidth: 260,
+                }}
+              >
+                <Box
+                  component="img"
+                  src="/images/logo.svg"
+                  alt="Brand identity"
+                  sx={{ width: "100%", objectFit: "contain", display: "block" }}
+                />
+              </Box>
+            </Box>
+
+            {/* ── Content zone ── */}
+            <Box
+              sx={{
+                p: { xs: 2.5, md: 3 },
+                flex: 1,
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <Stack direction="row" alignItems="center" spacing={1.5} sx={{ mb: 2 }}>
+                <Typography
+                  sx={{
+                    fontSize: 10,
+                    letterSpacing: "0.2em",
+                    color: "rgba(128,55,56,0.4)",
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  Step {item.number}
+                </Typography>
                 <Box
                   sx={{
-                    height: 2,
+                    flex: 1,
+                    height: "1px",
                     background:
-                      "linear-gradient(90deg,transparent 0%,#D6B56A 35%,#F4E3B2 60%,#D6B56A 80%,transparent 100%)",
-                    opacity: 0.7,
+                      "linear-gradient(90deg, rgba(128,55,56,0.18), transparent)",
                   }}
                 />
+              </Stack>
 
-                {/* Image */}
-                <Box
-                  sx={{
-                    position: "relative",
-                    height: { xs: 180, sm: 210, md: 240 },
-                    bgcolor: "rgba(0,0,0,0.30)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Box
-                    component="img"
-                    src={item.image}
-                    alt={item.name}
-                    sx={{
-                      maxWidth: "78%",
-                      maxHeight: "78%",
-                      objectFit: "contain",
-                      opacity: 0.93,
-                    }}
-                  />
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      inset: 0,
-                      background:
-                        "linear-gradient(180deg,transparent 40%,rgba(5,6,7,0.80) 100%)",
-                    }}
-                  />
-                </Box>
+              <Typography
+                sx={{
+                  fontFamily: '"Cormorant Garamond", serif',
+                  fontSize: { xs: 28, md: 32 },
+                  lineHeight: 1.05,
+                  letterSpacing: "-0.01em",
+                  color: "text.primary",
+                  mb: 1.5,
+                }}
+              >
+                {item.title}
+              </Typography>
 
-                {/* Info */}
-                <Box
-                  sx={{
-                    px: { xs: 2, md: 3 },
-                    pt: { xs: 2, md: 2.5 },
-                    pb: { xs: 2.5, md: 3 },
-                  }}
-                >
-                  <Chip
-                    label={item.category}
-                    size="small"
-                    sx={{
-                      mb: 1.5,
-                      bgcolor: "rgba(214,181,106,0.08)",
-                      color: "primary.main",
-                      border: "1px solid rgba(214,181,106,0.20)",
-                      fontSize: 10,
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      "& .MuiChip-label": { px: 1.25 },
-                    }}
-                  />
-
-                  <Typography
-                    sx={{
-                      fontFamily: '"Cinzel", serif',
-                      fontSize: { xs: 13, md: 15 },
-                      fontWeight: 600,
-                      letterSpacing: "0.05em",
-                      color: "rgba(255,255,255,0.92)",
-                      mb: 0.75,
-                    }}
-                  >
-                    {item.name}
-                  </Typography>
-
-                  <Typography
-                    sx={{
-                      color: "rgba(255,255,255,0.42)",
-                      fontSize: { xs: 12, md: 13 },
-                      lineHeight: 1.75,
-                      mb: 2,
-                    }}
-                  >
-                    Ask for availability, premiums, and delivery options.
-                  </Typography>
-
-                  <Box
-                    sx={{
-                      height: "1px",
-                      bgcolor: "rgba(255,255,255,0.07)",
-                      mb: 2,
-                    }}
-                  />
-
-                  <Button
-                    fullWidth
-                    variant="outlined"
-                    sx={{
-                      borderColor: "rgba(214,181,106,0.25)",
-                      color: "primary.main",
-                      fontSize: { xs: 11, md: 12 },
-                      letterSpacing: "0.1em",
-                      py: { xs: 0.85, md: 1 },
-                      "&:hover": {
-                        bgcolor: "rgba(214,181,106,0.07)",
-                        borderColor: "rgba(214,181,106,0.60)",
-                      },
-                    }}
-                  >
-                    Request details
-                  </Button>
-                </Box>
-              </Box>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              <Typography
+                sx={{
+                  color: "rgba(63,31,36,0.6)",
+                  fontSize: 13.5,
+                  lineHeight: 1.9,
+                  flex: 1,
+                }}
+              >
+                {item.body}
+              </Typography>
+            </Box>
+          </Box>
+        ))}
       </Box>
 
-      {/* ══════════════════════════════
-          PROGRESS INDICATOR
-      ══════════════════════════════ */}
+      {/* ── Footer Strip ── */}
       <Box
+        data-aos="fade-up"
         sx={{
-          mt: { xs: 4, md: 5 },
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 2,
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: 11,
-            letterSpacing: "0.2em",
-            color: "rgba(255,255,255,0.25)",
-            fontFamily: '"Cinzel", serif',
-            minWidth: 20,
-            textAlign: "right",
-          }}
-        >
-          {String(activeIndex + 1).padStart(2, "0")}
-        </Typography>
-
-        <Box
-          sx={{
-            width: { xs: 80, md: 120 },
-            height: 1.5,
-            bgcolor: "rgba(255,255,255,0.10)",
-            borderRadius: 1,
-            overflow: "hidden",
-          }}
-        >
-          <Box
-            sx={{
-              height: "100%",
-              borderRadius: 1,
-              bgcolor: "primary.main",
-              width: `${filtered.length <= 1 ? 100 : (activeIndex / (filtered.length - 1)) * 100}%`,
-              transition: "width 400ms cubic-bezier(0.4,0,0.2,1)",
-            }}
-          />
-        </Box>
-
-        <Typography
-          sx={{
-            fontSize: 11,
-            letterSpacing: "0.2em",
-            color: "rgba(255,255,255,0.25)",
-            fontFamily: '"Cinzel", serif',
-            minWidth: 20,
-          }}
-        >
-          {String(filtered.length).padStart(2, "0")}
-        </Typography>
-      </Box>
-
-      {/* ══════════════════════════════
-          FOOTER BAR
-          hidden on mobile to save space
-      ══════════════════════════════ */}
-      <Box
-        sx={{
-          borderTop: "1px solid rgba(255,255,255,0.08)",
-          mt: { xs: 4, md: 5 },
-          pt: { xs: 2.5, md: 3.5 },
+          mt: 5,
+          pt: 3.5,
+          borderTop: "1px solid rgba(128,55,56,0.12)",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -515,37 +349,57 @@ export default function ProductListing() {
           gap: 2,
         }}
       >
-        <Typography
-          sx={{
-            fontSize: 11,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.20)",
-          }}
-        >
-          Onyx Gold Bullion — Est. Dubai
-        </Typography>
+        <Stack direction="row" alignItems="center" spacing={1.5}>
+          <Box
+            sx={{
+              width: 5,
+              height: 5,
+              borderRadius: "50%",
+              bgcolor: "primary.main",
+              opacity: 0.45,
+            }}
+          />
+          <Typography
+            sx={{
+              fontSize: 10.5,
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: "rgba(63,31,36,0.45)",
+            }}
+          >
+            A mark built for legacy
+          </Typography>
+        </Stack>
 
         <Stack
           direction="row"
-          spacing={{ xs: 1.5, md: 3 }}
+          spacing={0}
+          divider={
+            <Box
+              sx={{
+                mx: 2,
+                width: "1px",
+                height: 12,
+                bgcolor: "rgba(128,55,56,0.2)",
+                alignSelf: "center",
+              }}
+            />
+          }
           sx={{ display: { xs: "none", sm: "flex" } }}
         >
-          {["Investment-grade", "Insured handling", "Discreet delivery"].map(
-            (t) => (
-              <Typography
-                key={t}
-                sx={{
-                  fontSize: 11,
-                  letterSpacing: "0.14em",
-                  textTransform: "uppercase",
-                  color: "rgba(255,255,255,0.20)",
-                }}
-              >
-                {t}
-              </Typography>
-            ),
-          )}
+          {["Concept", "Identity", "Application"].map((t) => (
+            <Typography
+              key={t}
+              sx={{
+                fontSize: 10.5,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: "rgba(63,31,36,0.4)",
+              }}
+            >
+              {t}
+            </Typography>
+          ))}
         </Stack>
       </Box>
     </Section>

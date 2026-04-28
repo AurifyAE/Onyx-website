@@ -1,286 +1,226 @@
-import React from "react";
-import { Box, Grid, Stack, Typography } from "@mui/material";
+import React from 'react';
+import { Box, Grid, Stack, Typography } from '@mui/material';
 import Section from "./Section";
 
-const CAPABILITIES = [
+const SERVICES = [
   {
-    num: "01",
-    title: "Trade",
-    body: "Real-time pricing and clean quoting for bullion transactions.",
+    title: 'Gold & Silver Trading',
+    body: 'High-purity bullion trading with trusted sourcing and transparent pricing.',
+    number: '01',
+    icon: '◆',
   },
   {
-    num: "02",
-    title: "Source",
-    body: "Responsible sourcing with verifiable supply-chain standards.",
+    title: 'Diamonds & Precious Stones',
+    body: 'Certified stones sourced and traded with international quality standards.',
+    number: '02',
+    icon: '✦',
   },
   {
-    num: "03",
-    title: "Store",
-    body: "Secure custody workflows designed for reliability and privacy.",
+    title: 'Raw Gold & Precious Metals',
+    body: 'Bulk trading and supply of raw gold and refined precious materials.',
+    number: '03',
+    icon: '◈',
   },
   {
-    num: "04",
-    title: "Deliver",
-    body: "Insured delivery options with careful handling and tracking.",
-  },
-  {
-    num: "05",
-    title: "Advise",
-    body: "Consultation for allocation, sizing, and portfolio considerations.",
-  },
-  {
-    num: "06",
-    title: "Support",
-    body: "A dedicated team to help with execution, logistics, and onboarding.",
+    title: 'Wholesale Supply',
+    body: 'Reliable supply chain for businesses, retailers, and global partners.',
+    number: '04',
+    icon: '◇',
   },
 ];
 
+const TAGS = ['Transparent Pricing', 'Licensed Operations', 'Premium Support'];
+
 export default function ServicesSection() {
   return (
-    <Section id="capabilities" variant="shaded">
-      {/* ══════════════════════════════
-          HEADER BAND
-      ══════════════════════════════ */}
+    <Section id="services" variant="plain">
+
+      {/* HEADER (UNCHANGED STRUCTURE) */}
       <Box
         sx={{
-          display: "flex",
-          alignItems: { xs: "flex-start", md: "flex-end" },
-          justifyContent: "space-between",
+          display: 'flex',
+          alignItems: { xs: 'flex-start', md: 'flex-end' },
+          justifyContent: 'space-between',
           gap: { xs: 3, md: 6 },
-          flexWrap: "wrap",
-          pb: 5,
-          borderBottom: "1px solid rgba(255,255,255,0.08)",
+          flexWrap: 'wrap',
+          pb: { xs: 5, md: 6 },
+          borderBottom: '1px solid rgba(128,55,56,0.14)',
         }}
-        data-aos="fade-up"
       >
-        {/* Left */}
         <Box>
-          <Stack
-            direction="row"
-            alignItems="center"
-            spacing={1.5}
-            sx={{ mb: 2.5 }}
-          >
+          <Stack direction="row" alignItems="center" spacing={1.5} sx={{ mb: 3 }}>
             <Box
               sx={{
-                width: 24,
-                height: 1,
-                bgcolor: "primary.main",
-                opacity: 0.8,
+                width: 6,
+                height: 6,
+                transform: 'rotate(45deg)',
+                bgcolor: '#803738',
+                opacity: 0.85,
               }}
             />
             <Typography
               sx={{
-                color: "primary.main",
-                textTransform: "uppercase",
-                letterSpacing: "0.3em",
-                fontSize: 11,
+                color: '#803738',
+                textTransform: 'uppercase',
+                letterSpacing: '0.28em',
+                fontSize: 10.5,
+                fontWeight: 500,
               }}
             >
-              Capabilities
+              What We Offer
             </Typography>
           </Stack>
 
           <Typography
             variant="h2"
             sx={{
-              fontSize: { xs: 28, md: 38, lg: 44 },
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
+              fontSize: { xs: 32, md: 50 },
+              lineHeight: 1.05,
+              letterSpacing: '-0.025em',
+              maxWidth: 520,
+              color: '#2A0F13',
             }}
           >
-            End-to-end{" "}
+            Premium bullion and{' '}
             <Box
               component="span"
               sx={{
-                fontStyle: "italic",
-                background:
-                  "linear-gradient(90deg,#D6B56A 0%,#F4E3B2 55%,#D6B56A 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                fontStyle: 'italic',
+                color: '#803738', // removed gradient
               }}
             >
-              bullion
-            </Box>{" "}
-            services.
+              trading services.
+            </Box>
           </Typography>
         </Box>
 
-        {/* Right */}
-        <Typography
-          sx={{
-            color: "rgba(255,255,255,0.45)",
-            fontSize: 14,
-            lineHeight: 1.9,
-            maxWidth: 360,
-            alignSelf: "flex-end",
-          }}
-        >
-          A focused set of services for investors and traders — built to reduce
-          friction and increase confidence at every step.
-        </Typography>
-      </Box>
-
-      {/* ══════════════════════════════
-          6-CELL GRID — no blank gaps
-      ══════════════════════════════ */}
-      <Box
-        sx={{
-          display: "grid",
-          gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr", md: "1fr 1fr 1fr" },
-          /* every cell shares the same border so edges merge cleanly */
-          "& > *": {
-            borderRight: "1px solid rgba(255,255,255,0.07)",
-            borderBottom: "1px solid rgba(255,255,255,0.07)",
-          },
-          /* kill right border on last column */
-          "& > *:nth-of-type(3n)": { borderRight: { md: "none" } },
-          "& > *:nth-of-type(2n)": {
-            borderRight: {
-              xs: "none",
-              sm: "none",
-              md: "1px solid rgba(255,255,255,0.07)",
-            },
-          },
-          "& > *:nth-of-type(2n)": { borderRight: { sm: "none" } },
-          /* kill bottom border on last row */
-          "& > *:nth-of-type(n+4)": { borderBottom: { md: "none" } },
-          "& > *:nth-of-type(n+5)": {
-            borderBottom: {
-              sm: "none",
-              md: "1px solid rgba(255,255,255,0.07)",
-            },
-          },
-          "& > *:nth-of-type(6)": { borderBottom: "none" },
-        }}
-      >
-        {CAPABILITIES.map((c, i) => (
-          <Box
-            key={c.title}
+        <Box sx={{ maxWidth:700, alignSelf: 'flex-end' }}>
+          <Typography
             sx={{
-              p: { xs: 3, md: 3.5 },
-              position: "relative",
-              overflow: "hidden",
-              transition: "background 220ms ease",
-              "&:hover": { bgcolor: "rgba(214,181,106,0.04)" },
-              /* gold left accent on hover */
-              "&::before": {
-                content: '""',
-                position: "absolute",
-                left: 0,
-                top: "20%",
-                height: "60%",
-                width: 2,
-                bgcolor: "primary.main",
-                borderRadius: 1,
-                opacity: 0,
-                transition: "opacity 220ms ease",
-              },
-              "&:hover::before": { opacity: 0.7 },
+              color: 'rgba(50,20,25,0.7)',
+              fontSize: 14.5,
+              lineHeight: 1.95,
+              mb: 2.5,
             }}
-            data-aos="fade-up"
-            data-aos-delay={i * 70}
           >
-            {/* Number */}
-            <Typography
-              sx={{
-                fontFamily: '"Cinzel", serif',
-                fontSize: 10.5,
-                color: "primary.main",
-                opacity: 0.55,
-                letterSpacing: "0.14em",
-                mb: 2.5,
-              }}
-            >
-              {c.num}
-            </Typography>
+            Designed for investors, retailers, and institutional clients seeking
+            trust, precision, and high-touch service.
+          </Typography>
 
-            {/* Gold rule */}
-            <Box
-              sx={{
-                width: 24,
-                height: 1.5,
-                bgcolor: "primary.main",
-                borderRadius: 1,
-                opacity: 0.45,
-                mb: 2,
-              }}
-            />
-
-            {/* Title */}
-            <Typography
-              sx={{
-                fontFamily: '"Cinzel", serif',
-                fontSize: { xs: 14, md: 15 },
-                fontWeight: 600,
-                letterSpacing: "0.08em",
-                color: "rgba(255,255,255,0.92)",
-                mb: 1.25,
-              }}
-            >
-              {c.title}
-            </Typography>
-
-            {/* Body */}
-            <Typography
-              sx={{
-                color: "rgba(255,255,255,0.48)",
-                fontSize: 13.5,
-                lineHeight: 1.85,
-              }}
-            >
-              {c.body}
-            </Typography>
-          </Box>
-        ))}
-      </Box>
-
-      {/* ══════════════════════════════
-          FOOTER BAR
-      ══════════════════════════════ */}
-      <Box
-        sx={{
-          borderTop: "1px solid rgba(255,255,255,0.08)",
-          pt: 3.5,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: 2,
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: 11,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.20)",
-          }}
-        >
-          Onyx Gold Bullion — Est. Dubai
-        </Typography>
-        <Stack
-          direction="row"
-          spacing={3}
-          sx={{ display: { xs: "none", sm: "flex" } }}
-        >
-          {["Transparent pricing", "Secure handling", "Discreet service"].map(
-            (tag) => (
-              <Typography
+          <Stack direction="row"  flex={1} alignItems="flex-end" spacing={1} flexWrap="wrap" useFlexGap>
+            {TAGS.map((tag) => (
+              <Box
                 key={tag}
                 sx={{
-                  fontSize: 11,
-                  letterSpacing: "0.14em",
-                  textTransform: "uppercase",
-                  color: "rgba(255,255,255,0.20)",
+                  px: 1.5,
+                  py: .5,
+                  borderRadius: 20,
+                  border: '1px solid rgba(128,55,56,0.22)',
+                  bgcolor: 'rgba(128,55,56,0.06)',
                 }}
               >
-                {tag}
-              </Typography>
-            ),
-          )}
-        </Stack>
+                <Typography
+                  sx={{
+                    fontSize: 10.5,
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(63,31,36,0.6)',
+                  }}
+                >
+                  {tag}
+                </Typography>
+              </Box>
+            ))}
+          </Stack>
+        </Box>
       </Box>
+
+      {/* CARDS (INVERTED) */}
+      <Grid container spacing={2.25} sx={{ mt: 4 }}>
+        {SERVICES.map((service, i) => (
+          <Grid item xs={12} sm={6} key={service.title}>
+            <Box
+              sx={{
+                position: 'relative',
+                p: { xs: 2.75, md: 3.25 },
+                borderRadius: 2.5,
+                border: '1px solid rgba(128,55,56,0.18)',
+                bgcolor: '#FFF9F1',
+                color: '#2A0F13',
+                height: '100%',
+                minHeight: 250,
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: '0 18px 34px rgba(128,55,56,0.12)',
+                },
+              }}
+            >
+              {/* TOP */}
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2.5 }}>
+                <Typography
+                  sx={{
+                    fontSize: 10,
+                    letterSpacing: '0.22em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(128,55,56,0.5)',
+                  }}
+                >
+                  Service {service.number}
+                </Typography>
+
+                <Typography
+                  sx={{
+                    fontSize: 16,
+                    color: 'rgba(128,55,56,0.4)',
+                  }}
+                >
+                  {service.icon}
+                </Typography>
+              </Box>
+
+              {/* TITLE */}
+              <Typography
+                variant="h3"
+                sx={{
+                  fontSize: { xs: 30, md: 34 },
+                  lineHeight: 1,
+                  mb: 1.6,
+                  color: '#2A0F13',
+                }}
+              >
+                {service.title}
+              </Typography>
+
+              {/* BODY */}
+              <Typography
+                sx={{
+                  color: 'rgba(50,20,25,0.7)',
+                  fontSize: 14,
+                  lineHeight: 1.85,
+                  flex: 1,
+                }}
+              >
+                {service.body}
+              </Typography>
+
+              {/* ACCENT */}
+              <Box
+                sx={{
+                  mt: 2.5,
+                  height: 3,
+                  width: 34,
+                  borderRadius: 999,
+                  background: '#803738',
+                }}
+              />
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
+
     </Section>
   );
 }

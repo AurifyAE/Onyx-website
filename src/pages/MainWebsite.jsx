@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Box } from '@mui/material';
-import LocomotiveScroll from 'locomotive-scroll';
 import NavigationBar from '../components/website/NavigationBar';
 import WebsiteHero from '../components/website/WebsiteHero';
 import ServicesSection from '../components/website/ServicesSection';
