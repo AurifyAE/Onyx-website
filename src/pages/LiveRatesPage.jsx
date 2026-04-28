@@ -14,14 +14,14 @@ const LiveRatesPage = () => {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ minHeight: "100vh", bgcolor: "#050607" }}>
+    <Box sx={{ minHeight: "100vh", bgcolor: "#4A2B2F" }}>
       <Box
         sx={{
           position: "sticky",
           top: 0,
           zIndex: 20,
-          borderBottom: "1px solid rgba(255,255,255,0.08)",
-          bgcolor: "rgba(5,6,7,0.92)",
+          borderBottom: "1px solid rgba(248,225,197,0.2)",
+          bgcolor: "rgba(128,55,56,0.9)",
           backdropFilter: "blur(14px)",
         }}
       >
@@ -58,12 +58,12 @@ const LiveRatesPage = () => {
               <IconButton
                 onClick={() => navigate("/")}
                 sx={{
-                  color: "rgba(255,255,255,0.72)",
-                  border: "1px solid rgba(255,255,255,0.12)",
+                  color: "rgba(248,225,197,0.92)",
+                  border: "1px solid rgba(248,225,197,0.3)",
                   borderRadius: 999,
                   p: 0.65,
                   ml: "auto",
-                  "&:hover": { bgcolor: "rgba(255,255,255,0.04)" },
+                  "&:hover": { bgcolor: "rgba(248,225,197,0.1)" },
                   display: { xs: "inline-flex", sm: "none" },
                 }}
                 aria-label="Close live rates"
@@ -86,7 +86,7 @@ const LiveRatesPage = () => {
                 onClick={() => navigate("/")}
                 sx={{
                   bgcolor: "primary.main",
-                  color: "#0b0e10",
+                  color: "secondary.main",
                   px: { xs: 1.35, md: 2.25 },
                   py: { xs: 0.6, md: 0.85 },
                   minWidth: 0,
@@ -95,7 +95,7 @@ const LiveRatesPage = () => {
                   fontSize: { xs: 12, md: 14 },
                   width: { xs: "100%", sm: "auto" },
                   whiteSpace: "nowrap",
-                  "&:hover": { bgcolor: "secondary.main" },
+                  "&:hover": { bgcolor: "#6E3038" },
                 }}
               >
                 Back to site
@@ -103,13 +103,13 @@ const LiveRatesPage = () => {
               <IconButton
                 onClick={() => navigate("/")}
                 sx={{
-                  color: "rgba(255,255,255,0.72)",
-                  border: "1px solid rgba(255,255,255,0.12)",
+                  color: "rgba(248,225,197,0.92)",
+                  border: "1px solid rgba(248,225,197,0.3)",
                   borderRadius: 999,
                   p: { sm: 0.75, md: 1 },
                   height:'fit-content',
 
-                  "&:hover": { bgcolor: "rgba(255,255,255,0.04)" },
+                  "&:hover": { bgcolor: "rgba(248,225,197,0.1)" },
                   display: { xs: "none", sm: "inline-flex" },
                 }}
                 aria-label="Close live rates"
@@ -128,8 +128,8 @@ const LiveRatesPage = () => {
             mx: "auto",
             borderRadius: { xs: 2, md: 4 },
             overflow: "hidden",
-            border: "1px solid rgba(255,255,255,0.10)",
-            bgcolor: "rgba(0,0,0,0.25)",
+            border: "1px solid rgba(248,225,197,0.24)",
+            bgcolor: "rgba(248,225,197,0.06)",
             height: { xs: "80vh", md: "82vh" },
           }}
         >

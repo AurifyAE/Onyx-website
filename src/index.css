@@ -7,9 +7,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #050607;
+  color-scheme: only light;
+  color: #3F1F24;
+  background-color: #F8E1C5;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -38,14 +38,14 @@ html {
 
 /* Theme tokens */
 :root {
-  --onyx-bg: #050607;
-  --onyx-surface: rgba(255, 255, 255, 0.03);
-  --onyx-border: rgba(255, 255, 255, 0.08);
-  --onyx-text: rgba(255, 255, 255, 0.92);
-  --onyx-muted: rgba(255, 255, 255, 0.62);
-  --onyx-gold: #d6b56a;
-  --onyx-gold-2: #f4e3b2;
-  --onyx-ink: #0b0e10;
+  --onyx-bg: #F8E1C5;
+  --onyx-surface: #FFF5E8;
+  --onyx-border: rgba(128, 55, 56, 0.18);
+  --onyx-text: #3F1F24;
+  --onyx-muted: rgba(63, 31, 36, 0.72);
+  --onyx-gold: #803738;
+  --onyx-gold-2: #F8E1C5;
+  --onyx-ink: #2D1619;
 }
 
 #root {

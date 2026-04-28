@@ -1,75 +1,100 @@
-import React from 'react';
-import { Box, Button, Stack, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import Section from './Section';
-import SectionHeader from './SectionHeader';
+import React from "react";
+import { Box, Grid, Stack, Typography } from "@mui/material";
+import Section from "./Section";
+import SectionHeader from "./SectionHeader";
 
 export default function CTASection() {
-  const navigate = useNavigate();
+  const items = [
+    {
+      title: "Gold & Silver Trading",
+      desc: "High-purity bullion trading with trusted sourcing and transparent pricing.",
+    },
+    {
+      title: "Diamonds & Precious Stones",
+      desc: "Certified stones sourced and traded with international quality standards.",
+    },
+    {
+      title: "Raw Gold & Precious Metals",
+      desc: "Bulk trading and supply of raw gold and refined precious materials.",
+    },
+    {
+      title: "Wholesale Supply",
+      desc: "Reliable supply chain for businesses, retailers, and global partners.",
+    },
+  ];
 
   return (
-    <Section id="cta" variant="shaded">
-      <SectionHeader
-        eyebrow="Enquiries"
-        title="Want a quote or availability today?"
-        description="Tell us what you need (bar/coin, weight, quantity). We’ll respond with pricing guidance and the next steps."
-        align="center"
-      />
-
-      <Box
-        sx={{
-          borderRadius: 5,
-          border: '1px solid rgba(255,255,255,0.10)',
-          bgcolor: 'rgba(255,255,255,0.03)',
-          overflow: 'hidden',
-          position: 'relative',
-          p: { xs: 3, md: 5 },
-        }}
-        data-aos="fade-up"
-      >
-        <Box
-          sx={{
-            position: 'absolute',
-            inset: -120,
-            pointerEvents: 'none',
-            background:
-              'radial-gradient(520px 260px at 20% 30%, rgba(214,181,106,0.16), transparent 60%), radial-gradient(620px 320px at 85% 60%, rgba(244,227,178,0.12), transparent 60%)',
-          }}
+    <Section id="services" variant="plain">
+      {/* 🔥 FIX: controlled spacing below header */}
+      <Box sx={{ mb: { xs: 4, md: 6 } }}>
+        <SectionHeader
+          eyebrow="Core Services"
+          title="Trusted trading across gold and precious assets."
+          description="We operate across bullion, diamonds, and raw precious metals with a focus on reliability and long-term partnerships."
+          align="center"
         />
-
-        <Stack
-          direction={{ xs: 'column', sm: 'row' }}
-          spacing={1.25}
-          justifyContent="center"
-          sx={{ position: 'relative' }}
-        >
-          <Button
-            variant="contained"
-            onClick={() => {
-              const el = document.getElementById('contact');
-              if (!el) return;
-              const y = el.getBoundingClientRect().top + window.scrollY - 84;
-              window.scrollTo({ top: y, behavior: 'smooth' });
-            }}
-            sx={{ bgcolor: 'primary.main', color: '#0b0e10', px: 3, py: 1.2, '&:hover': { bgcolor: 'secondary.main' } }}
-          >
-            Contact us
-          </Button>
-          <Button
-            variant="outlined"
-            onClick={() => navigate('/liverates')}
-            sx={{
-              borderColor: 'rgba(255,255,255,0.18)',
-              color: 'rgba(255,255,255,0.86)',
-              px: 3,
-              py: 1.2,
-              '&:hover': { borderColor: 'rgba(214,181,106,0.7)', bgcolor: 'rgba(255,255,255,0.04)' },
-            }}
-          >
-            Open live rates
-          </Button>
-        </Stack>
       </Box>
+
+      {/* 🔥 FIX: alignItems stretch ensures equal height */}
+      <Grid container spacing={3} alignItems="stretch">
+        {items.map((item, i) => (
+          <Grid item xs={12} sm={6} key={i} sx={{ display: "flex" }}>
+            {/* 🔥 FIX: flex ensures full height cards */}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                borderRadius: "20px",
+                p: 3,
+                width: "100%",
+                backgroundColor: "#FFF8EE",
+                border: "1px solid rgba(128,55,56,0.12)",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  transform: "translateY(-4px)",
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.08)",
+                },
+              }}
+            >
+              {/* 🔥 FIX: better spacing rhythm */}
+              <Stack spacing={2}>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontSize: 20,
+                    fontWeight: 600,
+                    color: "#2A0F13",
+                  }}
+                >
+                  {item.title}
+                </Typography>
+
+                <Typography
+                  sx={{
+                    fontSize: 14,
+                    lineHeight: 1.8,
+                    color: "rgba(50,20,25,0.75)",
+                  }}
+                >
+                  {item.desc}
+                </Typography>
+              </Stack>
+
+              {/* 🔥 FIX: push accent to bottom for alignment */}
+              <Box
+                sx={{
+                  mt: 3,
+                  height: 3,
+                  width: 50,
+                  borderRadius: 999,
+                  backgroundColor: "#803738",
+                }}
+              />
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
     </Section>
   );
 }
