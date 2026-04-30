@@ -63,7 +63,6 @@ export default function CTASection() {
                   variant="h5"
                   sx={{
                     fontSize: 20,
-                    fontWeight: 600,
                     color: "#2A0F13",
                   }}
                 >
