@@ -26,7 +26,6 @@ const BRAND_STEPS = [
 export default function ProductListing() {
   return (
     <Section id="identity" variant="soft">
-
       {/* ── Header ── */}
       <Box
         data-aos="fade-up"
@@ -41,7 +40,12 @@ export default function ProductListing() {
         }}
       >
         <Box>
-          <Stack direction="row" alignItems="center" spacing={1.5} sx={{ mb: 3 }}>
+          <Stack
+            direction="row"
+            alignItems="center"
+            spacing={1.5}
+            sx={{ mb: 3 }}
+          >
             <Box
               sx={{
                 width: 6,
@@ -80,7 +84,8 @@ export default function ProductListing() {
               component="span"
               sx={{
                 fontStyle: "italic",
-                background: "linear-gradient(100deg,#803738 0%,#B87050 50%,#803738 100%)",
+                background:
+                  "linear-gradient(100deg,#803738 0%,#B87050 50%,#803738 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -150,9 +155,9 @@ export default function ProductListing() {
           mt: 3,
           display: "grid",
           gridTemplateColumns: {
-            xs: "1fr",           // 1 column on mobile
-            sm: "1fr 1fr",       // 2 columns on tablet
-            md: "1fr 1fr 1fr",   // 3 columns on desktop
+            xs: "1fr", // 1 column on mobile
+            sm: "1fr 1fr", // 2 columns on tablet
+            md: "1fr 1fr 1fr", // 3 columns on desktop
           },
           gap: "20px",
           alignItems: "stretch",
@@ -194,7 +199,8 @@ export default function ProductListing() {
                 bgcolor: "rgba(248,225,197,0.38)",
                 borderBottom: "1px solid rgba(128,55,56,0.1)",
                 borderRadius: "12px 12px 0 0",
-                height: 210,
+                height: { xs: 150, md: 210 },
+
                 flexShrink: 0,
                 overflow: "hidden",
                 display: "flex",
@@ -245,7 +251,7 @@ export default function ProductListing() {
                   bottom: -16,
                   right: 12,
                   fontFamily: '"Cormorant Garamond", serif',
-                  fontSize: 96,
+                  fontSize: { xs: 70, md: 96 },
                   fontWeight: 700,
                   color: "rgba(128,55,56,0.06)",
                   lineHeight: 1,
@@ -263,7 +269,7 @@ export default function ProductListing() {
                   position: "relative",
                   zIndex: 1,
                   width: "70%",
-                  maxWidth: 260,
+                  maxWidth: { xs: 150, md: 260 },
                 }}
               >
                 <Box
@@ -284,7 +290,12 @@ export default function ProductListing() {
                 flexDirection: "column",
               }}
             >
-              <Stack direction="row" alignItems="center" spacing={1.5} sx={{ mb: 2 }}>
+              <Stack
+                direction="row"
+                alignItems="center"
+                spacing={1.5}
+                sx={{ mb: 2 }}
+              >
                 <Typography
                   sx={{
                     fontSize: 10,
@@ -310,7 +321,7 @@ export default function ProductListing() {
               <Typography
                 sx={{
                   fontFamily: '"Cormorant Garamond", serif',
-                  fontSize: { xs: 28, md: 32 },
+                  fontSize: { xs: 25, md: 32 },
                   lineHeight: 1.05,
                   letterSpacing: "-0.01em",
                   color: "text.primary",

@@ -131,8 +131,10 @@ const WebsiteHero = () => {
                       bgcolor: "primary.main",
                       color: "secondary.main",
                       px: { xs: 2.5, md: 3.5 },
-                      py: { xs: 1.2, md: 1.35 },
+                      py: { xs: 1, md: 1.35 },
+                      fontSize: { xs: "14px", md: "16px" },
                       fontWeight: 700,
+                      borderRadius: "10vw",
                       letterSpacing: "0.04em",
                       boxShadow: "0 12px 30px rgba(128,55,56,0.16)",
                       "&:hover": { bgcolor: "#6E3038" },
@@ -147,8 +149,10 @@ const WebsiteHero = () => {
                       borderColor: "rgba(128,55,56,0.35)",
                       color: "primary.main",
                       px: { xs: 2.5, md: 3.5 },
-                      py: { xs: 1.2, md: 1.35 },
+                      py: { xs: 1, md: 1.35 },
                       letterSpacing: "0.04em",
+                      fontSize: { xs: "14px", md: "16px" },
+                      borderRadius: "10vw",
                       "&:hover": {
                         borderColor: "primary.main",
                         bgcolor: "rgba(128,55,56,0.06)",
@@ -161,12 +165,13 @@ const WebsiteHero = () => {
               </Stack>
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} sx={{ mx: "auto" }}>
               <Box
                 sx={{
                   position: "relative",
                   borderRadius: { xs: "20px", md: "28px" },
-                  p: { xs: 3, md: 4 },
+                  px: { xs: 2, md: 4 },
+                  py: { xs: 4, md: 4 },
                   border: "1px solid rgba(128,55,56,0.16)",
                   bgcolor: "rgba(255,245,232,0.62)",
                   backdropFilter: "blur(10px)",
@@ -178,7 +183,7 @@ const WebsiteHero = () => {
                 <Box
                   sx={{
                     width: "100%",
-                    maxWidth: 460,
+                    maxWidth: { xs: 200, md: 460 },
                     aspectRatio: "5 / 1",
                     mx: "auto",
                   }}
@@ -232,10 +237,10 @@ const WebsiteHero = () => {
                 <Box
                   sx={{
                     mt: 3,
-                    height: 6,
+                    height: 2,
                     borderRadius: 999,
                     background:
-                      "linear-gradient(90deg, rgba(128,55,56,0.10) 0%, rgba(128,55,56,0.38) 50%, rgba(128,55,56,0.10) 100%)",
+                      "linear-gradient(90deg, rgba(128,55,56,0) 0%, rgba(128,55,56,0.38) 50%, rgba(128,55,56,0) 100%)",
                   }}
                 />
               </Box>
